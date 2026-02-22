@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TK SMMA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- WEEK 1: banner + name top-left + copyright footer -->
+    <header>
+      <div class="banner">
+        <div class="brand" aria-label="Company name">
+          TK Social Media Management Agency
+        </div>
+        <div
+          style="
+            color: rgba(238, 242, 255, 0.7);
+            font-size: 13px;
+            font-weight: 600;
+          "
+        >
+          Launch-ready client showcase
+        </div>
+      </div>
+
+      <!-- WEEK 2: horizontal menu equally spaced-->
+      <nav aria-label="Primary navigation">
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#clients">Our Clients</a>
+          <a href="#vision">Our Vision</a>
+          <a href="#resources">Our Resources</a>
+          <a href="#about">About TK SMMA</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <div id="home" class="hero">
+        <div class="card">
+          <div class="kicker">Results you can see</div>
+          <h1>
+            We help creators and brands turn attention into consistent growth.
+          </h1>
+          <p>
+            TK SMMA manages content strategy, posting, and performance tracking
+            — so our clients can focus on what they do best. Below are three of
+            our top performers.
+          </p>
+          <div class="pill-row" aria-label="Highlights">
+            <div class="pill">Simple, clean design</div>
+            <div class="pill">Works on mobile + desktop</div>
+            <div class="pill">Quick client sign-up</div>
+          </div>
+        </div>
+
+        <div class="card stats" aria-label="Summary">
+          <div class="stat">
+            <div class="label">Total views (top 3 clients)</div>
+            <div class="value" id="totalViews">—</div>
+            <div class="sub">Updated automatically</div>
+          </div>
+          <div class="stat">
+            <div class="label">New client sign-ups (this browser)</div>
+            <div class="value" id="signupCount">—</div>
+            <div class="sub">For demo purposes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3: show 3 best performing clients + responsive cards -->
+      <section id="clients">
+        <div class="section-title">
+          <h2>Our Clients</h2>
+          <span>Three best performing collaborations</span>
+        </div>
+
+        <div class="grid" id="clientGrid" aria-label="Client showcase">
+          <!-- populated by JS -->
+        </div>
+      </section>
+
+      <section id="vision">
+        <div class="section-title">
+          <h2>Our Vision</h2>
+          <span>Simple, measurable, repeatable</span>
+        </div>
+        <div class="card" style="padding: 16px">
+          <p style="margin: 0">
+            We keep the process clear: strong content, consistent delivery, and
+            tracking that shows progress. Our goal is to build trust, grow
+            audiences, and turn views into real outcomes.
+          </p>
+        </div>
+      </section>
+
+      <section id="resources">
+        <div class="section-title">
+          <h2>Our Resources</h2>
+          <span>What we bring to the table</span>
+        </div>
+        <div class="card" style="padding: 16px">
+          <ul
+            style="
+              margin: 0;
+              padding-left: 18px;
+              color: rgba(238, 242, 255, 0.86);
+            "
+          >
+            <li>Content planning & scheduling</li>
+            <li>Performance reporting & insights</li>
+            <li>Brand tone and messaging support</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-title">
+          <h2>About TK SMMA</h2>
+          <span>Focused on results</span>
+        </div>
+        <div class="card" style="padding: 16px">
+          <p style="margin: 0">
+            We’re a small agency built for modern creators. We value speed,
+            clarity, and measurable wins.
+          </p>
+        </div>
+      </section>
+
+      <!-- WEEK 4: forum form for email + full name + thank you message -->
+      <section id="forum" style="padding-top: 22px">
+        <div class="section-title">
+          <h2>New Client Forum</h2>
+          <span>Share your info and we’ll reach out</span>
+        </div>
+
+        <div class="form-wrap">
+          <div class="card">
+            <form id="signupForm" novalidate>
+              <label for="fullName">Full Name</label>
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                placeholder="e.g., Alex Johnson"
+                required
+                minlength="2"
+              />
+
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="e.g., alex@email.com"
+                required
+              />
+
+              <button class="btn" type="submit">Submit</button>
+
+              <div
+                class="success"
+                id="successBox"
+                role="status"
+                aria-live="polite"
+                style="margin-top: 12px"
+              ></div>
+            </form>
+          </div>
+
+          <div class="card note">
+            <div>
+              <div class="kicker">Thanks For Stopping By</div>
+              <p style="margin: 6px 0 0; color: rgba(238, 242, 255, 0.86)">
+                We Would Love To See You Soon
+              </p>
+            </div>
+            <div class="list" id="signupList" aria-label="Recent sign-ups">
+              😊
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> TK Social Media Management Agency. All rights
+        reserved.
+      </footer>
+    </main>
+
+    <script>
+      const clients = [
+        {
+          name: "Client 1 – Creator Campaign",
+          views: 1284500,
+          img: "client-1.png",
+        },
+        {
+          name: "Client 2 – Podcast Growth",
+          views: 965200,
+          img: "client-2.png",
+        },
+        {
+          name: "Client 3 – Lifestyle Reels",
+          views: 742900,
+          img: "client-3.png",
+        },
+      ];
+
+      const fmt = new Intl.NumberFormat(undefined);
+
+      const clientGrid = document.getElementById("clientGrid");
+      const totalViewsEl = document.getElementById("totalViews");
+      const signupCountEl = document.getElementById("signupCount");
+      const yearEl = document.getElementById("year");
+
+      function renderClients() {
+        clientGrid.innerHTML = clients
+          .map(
+            (c) => `
+        <article class="card client">
+          <div class="img"><img src="${c.img}" alt="${c.name} photo"></div>
+          <div class="body">
+            <h3>${c.name}</h3>
+            <div class="meta">
+              <span class="badge"><span class="dot" aria-hidden="true"></span>${fmt.format(c.views)} views</span>
+              <span class="badge">Top performer</span>
+            </div>
+          </div>
+        </article>
+      `,
+          )
+          .join("");
+
+        const total = clients.reduce((sum, c) => sum + c.views, 0);
+        totalViewsEl.textContent = fmt.format(total);
+      }
+
+      const STORAGE_KEY = "tk_smmas_signups_v1";
+
+      function loadSignups() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveSignups(list) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      }
+
+      function renderSignups() {
+        const list = loadSignups();
+        signupCountEl.textContent = fmt.format(list.length);
+
+        const box = document.getElementById("signupList");
+        if (list.length === 0) {
+          box.textContent = "No sign-ups yet.";
+          return;
+        }
+
+        const items = list
+          .slice(-5)
+          .reverse()
+          .map(
+            (s) => `
+        <div style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,.10)">
+          <div style="font-weight:800">${escapeHtml(s.fullName)}</div>
+          <div style="color:rgba(238,242,255,.72)">${escapeHtml(s.email)}</div>
+        </div>
+      `,
+          )
+          .join("");
+
+        box.innerHTML = `<div style="font-weight:800; margin-bottom:8px">Recent sign-ups</div>${items}`;
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      // Submit handler: show thank-you message (Week 4 requirement)
+      document.getElementById("signupForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        if (
+          fullName.length < 2 ||
+          !email.includes("@") ||
+          !email.includes(".")
+        ) {
+          const box = document.getElementById("successBox");
+          box.style.display = "block";
+          box.innerHTML =
+            "<strong>Please check your details.</strong> Add a full name and a valid email.";
+          return;
+        }
+
+        const list = loadSignups();
+        list.push({ fullName, email, ts: Date.now() });
+        saveSignups(list);
+
+        // Thank-you message
+        const box = document.getElementById("successBox");
+        box.style.display = "block";
+        box.innerHTML = `<strong>Thank you, ${escapeHtml(fullName)}!</strong> We received your sign-up and will reach out soon.`;
+
+        // Reset fields and update list + counts
+        e.target.reset();
+        renderSignups();
+      });
+
+      // Init
+      yearEl.textContent = new Date().getFullYear();
+      renderClients();
+      renderSignups();
+    </script>
+  </body>
+</html>
